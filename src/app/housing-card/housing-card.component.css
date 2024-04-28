@@ -1,0 +1,65 @@
+.image-container {
+  width: 100%;
+  height: 300px;
+  /*overflow: hidden;*/
+  margin: 0 auto;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2px; /* Ajoute des coins arrondis */
+}
+
+.image-container img:hover {
+  cursor: pointer;
+}
+
+.housing-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.content-card {
+  margin-top: 3%;
+}
+
+.housing-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 5%;
+}
+
+.price {
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(70, 147, 221);
+}
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.box-1 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.box-2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.louer-button {
+  background-color: rgb(154, 192, 232);
+  color: white;
+}
+
+
+

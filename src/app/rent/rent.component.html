@@ -1,0 +1,84 @@
+<div *ngIf="authService.isAuthenticatedUser; else userNotConnected">
+  <form [formGroup]="locationForm" (ngSubmit)="onSubmitLocation()">
+    <div class="container-principal">
+      <h2>Location de logement</h2>
+      <h3 class="h3">Informations sur le logement :</h3>
+      <div class="sous-conteneur1">
+        <mat-form-field appearance="outline" class="mat-form-custom" floatLabel="auto">
+          <input matInput [matDatepicker]="pickerArrivee" placeholder="Date d'arrivée"
+                 formControlName="dateArrivee"
+                 [min]="minDate"
+                 [matDatepickerFilter]="reservedArrivalDate"
+                 name="dateDepart">
+          <mat-datepicker-toggle matSuffix [for]="pickerArrivee"></mat-datepicker-toggle>
+          <mat-datepicker #pickerArrivee></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="mat-form-custom" floatLabel="auto">
+          <input matInput [matDatepicker]="pickerDepart" placeholder="Date de départ"
+                 formControlName="dateDepart"
+                 [min]="minDate"
+                 [matDatepickerFilter]="reservedDepartureDate">
+          <mat-datepicker-toggle matSuffix [for]="pickerDepart"></mat-datepicker-toggle>
+          <mat-datepicker #pickerDepart></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="mat-form-custom" floatLabel="always">
+          <input matInput type="number" placeholder="Nombre de voyageurs"
+                 formControlName="nombreVoyageurs"
+                 min="1"
+                 max="{{nombrePersonneMax}}"
+                 name="nombreVoyageurs">
+        </mat-form-field>
+      </div>
+
+      <hr class="hr">
+
+      <h3 class="h3">Informations de paiement :</h3>
+      <div class="sous-conteneur2">
+        <mat-form-field appearance="outline" class="mat-form-custom" floatLabel="auto">
+          <input matInput placeholder="Nom sur la carte"
+                 name="nom"
+                 formControlName="nom">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="mat-form-custom" floatLabel="auto">
+          <input matInput placeholder="Numéro carte"
+                 name="code"
+                 type="text"
+                 formControlName="code">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="mat-form-custom" floatLabel="auto">
+          <input matInput [matDatepicker]="pickerExpiration"
+                 [min]="minDate"
+                 placeholder="Date d'expiration"
+                 formControlName="expiration">
+          <mat-datepicker-toggle matSuffix [for]="pickerExpiration">
+          </mat-datepicker-toggle>
+          <mat-datepicker #pickerExpiration></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="mat-form-custom" floatLabel="auto">
+          <input matInput placeholder="CVV"
+                 name="CVV"
+                 type="number"
+                 min="100"
+                 max="999"
+                 formControlName="ccv">
+        </mat-form-field>
+      </div>
+
+
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!locationForm.valid || !locationForm.touched">Confirmer</button>
+        <button mat-raised-button color="warn" type="button" (click)="annulerLocation()">Annuler</button>
+      </div>
+    </div>
+  </form>
+</div>
+<ng-template #userNotConnected>
+  <div class="container-principal">
+    <h3> Vous devez vous connecter pour effecter une reservation ! </h3>
+    <button mat-stroked-button class="login-button" (click)="login()">
+      Login
+      <mat-icon>login</mat-icon>
+    </button>
+  </div>
+
+</ng-template>
