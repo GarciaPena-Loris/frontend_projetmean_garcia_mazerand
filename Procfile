@@ -1,1 +1,0 @@
-web: node dist/frontend_projetmean_garcia_mazerand/server/server.mjs
