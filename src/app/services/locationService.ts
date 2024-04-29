@@ -7,7 +7,7 @@ import {Location} from "../model/location.interface";
   providedIn: 'root'
 })
 export class LocationService {
-  private apiUrl = 'http://localhost:3080/api';
+  private apiUrl = 'https://backend-projetmean-b6bb1524bb43.herokuapp.com/api';
 
   constructor(private http: HttpClient) {
   }

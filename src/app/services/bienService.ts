@@ -7,7 +7,7 @@ import {Bien} from '../model/bien.interface';
   providedIn: 'root',
 })
 export class BienService {
-  private apiUrl = 'http://localhost:3080/api';
+  private apiUrl = 'https://backend-projetmean-b6bb1524bb43.herokuapp.com/api';
 
   constructor(private http: HttpClient) {
   }

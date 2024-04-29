@@ -8,7 +8,7 @@ import {CookieService} from "ngx-cookie-service";
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3080/api';
+  private apiUrl = 'https://backend-projetmean-b6bb1524bb43.herokuapp.com/api';
   private _isAuthenticated = false;
   private _currentUser: User | undefined;
 
