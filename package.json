@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port $PORT --host 0.0.0.0",
+    "start": "http-server -p $PORT -c-1 dist/your-angular-app-name",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -40,6 +40,7 @@
     "@types/googlemaps": "^3.43.3",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
+    "http-server": "^14.1.1",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
