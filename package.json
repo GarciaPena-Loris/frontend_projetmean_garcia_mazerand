@@ -10,9 +10,6 @@
     "serve:ssr:frontend_projetmean_garcia_mazerand": "node dist/frontend_projetmean_garcia_mazerand/server/server.mjs",
     "heroku-postbuild": "ng build --configuration production"
   },
-  "engines": {
-    "node": "v14.x"
-  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^17.3.0",
