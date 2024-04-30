@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "http-server -p $PORT -c-1 dist/your-angular-app-name",
-    "build": "ng build",
+    "start": "http-server -p $PORT -c-1 dist/frontend_projetmean_garcia_mazerand",    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:frontend_projetmean_garcia_mazerand": "node dist/frontend_projetmean_garcia_mazerand/server/server.mjs",
