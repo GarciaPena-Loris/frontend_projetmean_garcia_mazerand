@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {AuthService} from "../services/auth.service";
+import {AuthService} from "../auth-card/auth.service";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Location} from "../model/location.interface";
@@ -26,12 +26,14 @@ export class RentComponent implements OnInit {
   }, {validators: this.dateLessThan('dateArrivee', 'dateDepart')});
 
   nombrePersonneMax = 1;
+  prixLogement = 0;
   minDate: Date = new Date();
   reservations: { dateDebut: Date, dateFin: Date }[] = [];
 
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<RentComponent>, protected authService: AuthService, private router: Router, private locationService: LocationService,
               @Inject(MAT_DIALOG_DATA) public data: Bien, private _snackBar: MatSnackBar) {
     this.nombrePersonneMax = data.nbCouchages;
+    this.prixLogement = data.prix;
   }
 
   ngOnInit() {
@@ -108,6 +110,18 @@ export class RentComponent implements OnInit {
 
       return isWithinReservation || isBeforeArrivalDate || isAfterNextReservation;
     });
+  }
+
+  calculateNights(): number {
+    const oneDay = 24 * 60 * 60 * 1000; // heures*minutes*secondes*millisecondes
+    const diffDays = Math.round(Math.abs((this.locationForm.controls['dateArrivee'].value - this.locationForm.controls['dateDepart'].value) / oneDay));
+    return diffDays + 1;
+  }
+
+  calculatePrice(): string {
+    const oneDay = 24 * 60 * 60 * 1000; // heures*minutes*secondes*millisecondes
+    const diffDays = Math.round(Math.abs((this.locationForm.controls['dateArrivee'].value - this.locationForm.controls['dateDepart'].value) / oneDay));
+    return parseFloat(String((diffDays + 1) * this.prixLogement)).toFixed(2);
   }
 
   reservedDepartureDate = this.isDepartureReserved.bind(this);
